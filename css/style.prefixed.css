@@ -6,12 +6,32 @@
 }
 
 body {
-  background: #fff;
+  background: #020202;
   font-family: "Source Sans Pro", sans-serif;
-  color: #444;
+  color: #fff;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: all .3s ease-in-out;
+}
+
+a:hover {
+  color: #7cd813;
+}
+
+img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+  width: 75%;
+  margin: 0 auto;
+  height: 60vh;
 }
 
 .container {
@@ -29,7 +49,7 @@ body {
 .section-title span {
   text-transform: none;
   font-weight: 400;
-  color: #777777;
+  color: #353535;
 }
 
 /* Layout */
@@ -50,20 +70,11 @@ body {
 }
 
 .sidebar, .posts {
-  background: #fff;
+  background: #1f1e1e;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid #444;
+  border: 1px solid #020202;
   border-radius: 5px;
-}
-
-/* Logo */
-.logo {
-  font-family: "Sacramento", cursive;
-  font-weight: 400;
-  font-size: 104px;
-  line-height: 1;
-  text-align: center;
 }
 
 /* Lists */
@@ -89,10 +100,12 @@ body {
 /* Post */
 .post {
   display: none;
+  z-index: -1;
 }
 
 .post.active {
   display: block;
+  z-index: 1;
 }
 
 .post-author {

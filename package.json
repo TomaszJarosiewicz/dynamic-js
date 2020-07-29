@@ -8,7 +8,7 @@
     "init:dirst": "mkdir sass css vendor images js",
     "init:files": "touch README.md index.html sass/style.scss js/script.js",
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
-    "test": "npm run test:*",
+    "test": "npm-run-all test:*",
     "test:html": "html-validate *.html",
     "test:js": "eslint js/",
     "test:scss": "stylelint sass/",
@@ -38,8 +38,6 @@
     "html-validate": "^3.0.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
-    "onchange": "^7.0.2",
-    "stylelint": "^13.6.1",
-    "stylelint-scss": "^3.18.0"
+    "onchange": "^7.0.2"
   }
 }

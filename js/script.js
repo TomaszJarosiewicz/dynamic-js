@@ -1,5 +1,12 @@
 'use strict';
 
+let optArticleSelector = '.post';
+let optTitleSelector = '.post-title';
+let optTitleListSelector = '.titles';
+let optArticleTagsSelector = '.post-tags .list';
+const articles = document.querySelectorAll(optArticleSelector);
+let html;
+
 function titleClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
@@ -22,21 +29,17 @@ function titleClickHandler(event) {
 }
 
 function generateTitleLinks() {
-  let optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
   const titleList = document.querySelector(optTitleListSelector);
-  let article = document.querySelectorAll(optArticleSelector);
   let articleId;
   let articleTitle;
-  let html = '';
+  html = '';
 
   titleList.innerHTML = '';
   titleList.insertAdjacentHTML('afterbegin', optTitleListSelector);
 
-  for(let articles of article) {
-    articleId = articles.getAttribute('id');
-    articleTitle = articles.querySelector(optTitleSelector).innerHTML;
+  for(let article of articles) {
+    articleId = article.getAttribute('id');
+    articleTitle = article.querySelector(optTitleSelector).innerHTML;
     optTitleListSelector = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     html += optTitleListSelector;
   }
@@ -51,4 +54,25 @@ const links = document.querySelectorAll('.titles a');
 for(let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
+
+function generateTags() {
+
+  for(let article of articles) {
+    html = '';
+    const titleList = article.querySelector(optArticleTagsSelector);
+    const articleTags = article.getAttribute('data-tags');
+    const articleTagsArray = articleTags.split(' ');
+
+    for(let tag of articleTagsArray) {
+      titleList.innerHTML = '';
+      titleList.insertAdjacentHTML('afterbegin', optArticleTagsSelector);
+      optArticleTagsSelector = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      html += optArticleTagsSelector;
+    }
+
+    titleList.innerHTML = html;
+  }
+}
+
+generateTags();
 

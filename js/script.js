@@ -59,7 +59,8 @@ function generateTags() {
 
   for(let article of articles) {
     html = '';
-    const titleList = article.querySelector(optArticleTagsSelector);
+    const titleList = article.querySelector('.post-tags .list');
+    console.log(titleList);
     const articleTags = article.getAttribute('data-tags');
     const articleTagsArray = articleTags.split(' ');
 

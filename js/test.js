@@ -117,7 +117,7 @@ function generateTags() {
       titleList.innerHTML = '';
       titleList.insertAdjacentHTML('afterbegin', select.article.tags);
       const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      if(!allTags.hasOwnProperty(tag)) {
+      if(!allTags.hasOwnProperty(tag)){
         allTags[tag] = 1;
       } else {
         allTags[tag]++;
@@ -179,9 +179,8 @@ function generateAuthors() {
 
   for(const article of articles){
     const nameAuthor = article.querySelector(select.article.author);
-    const titleListAuthor = document.querySelector(select.listOf.authors);
+    const titleList = article.querySelector(select.article.tags);
     const authorTags = article.getAttribute('data-author');
-    console.log(titleListAuthor);
     html = '';
 
     nameAuthor.innerHTML = '';
@@ -193,11 +192,10 @@ function generateAuthors() {
 
     const articleTagsArray = authorTags.split(' ');
     for(let tag of articleTagsArray) {
-      titleListAuthor.innerHTML = '';
-      html = '';
+      const titleListAuthor = article.querySelector(select.article.tags);
       titleListAuthor.insertAdjacentHTML('afterbegin', select.listOf.authors);
       const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      if(!allTags.hasOwnProperty(tag)) {
+      if(!allTags.hasOwnProperty(tag)){
         allTags[tag] = 1;
       } else {
         allTags[tag]++;
@@ -205,18 +203,20 @@ function generateAuthors() {
       html += linkHTML;
     }
 
-    titleListAuthor.innerHTML = html;
+    titleList.innerHTML = html;
   }
 
   const tagList = document.querySelector('.authors');
+  const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags) {
-    const tagLinkHTML = '<li>' + tag + ' ' + '('+ allTags[tag] +') </li>';
+    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + tag + '">' + tag + ' ' + '('+ allTags[tag] +') </li>';
     allTagsHTML += tagLinkHTML;
     console.log(allTagsHTML);
   }
 
   tagList.innerHTML = allTagsHTML;
+
 }
 
 generateAuthors();

@@ -8,9 +8,8 @@
         "ecmaVersion": 2015
     },
     "rules": {
+      "no-prototype-builtins": "off",
         "indent": [
-          "no-prototype-builtins",
-          "off",
             "error",
             2
         ],

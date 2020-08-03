@@ -9,6 +9,8 @@
     },
     "rules": {
         "indent": [
+          "no-prototype-builtins",
+          "off",
             "error",
             2
         ],
